@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './index.css'
 import * as serviceWorker from './serviceWorker';
+import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import MasterContainer from './containers/MasterContainer';
+import MoviesView from './views/MoviesView';
+import Details from './components/Details'
+
+var hist = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router history={hist}>
+    <MasterContainer>
+      <Switch>
+        <Route exact path="/movies/:id" component={Details} />
+        <Route exact path="/movies/" component={MoviesView} />
+        {/* <Route path="/login-page" component={LoginPage} /> */}
+        <Route path="/" component={MoviesView} />
+      </Switch>
+    </MasterContainer>
+  </Router>
+  ,
   document.getElementById('root')
 );
 

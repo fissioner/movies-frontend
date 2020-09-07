@@ -3,12 +3,6 @@ import { List, Space, Descriptions, Card } from 'antd';
 import { MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { useParams, withRouter } from 'react-router';
 
-const IconText = ({ icon, text }) => (
-    <Space>
-        {React.createElement(icon)}
-        {text}
-    </Space>
-);
 
 const Article = () => {
     const { id } = useParams();

@@ -13,6 +13,7 @@ const IconText = ({ icon, text }) => (
 );
 
 const Article = (props) => {
+    console.log('Articles: ', props.movies)
     return (
         <List
             pagination={{

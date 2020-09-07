@@ -25,7 +25,7 @@ export default function MoviesList() {
     useEffect( () => {
       getMovies();
     }, []);
-  
+
     return (
           <ArticleList movies={movies}/>
     );

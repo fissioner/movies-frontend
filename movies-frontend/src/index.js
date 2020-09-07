@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import MasterContainer from './containers/MasterContainer';
 import MoviesView from './views/MoviesView';
-import Details from './components/Details'
+import DetailsView from './views/DetailsView'
 
 var hist = createBrowserHistory();
 
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Router history={hist}>
     <MasterContainer>
       <Switch>
-        <Route exact path="/movies/:id" component={Details} />
+        <Route exact path="/movies/:id" component={DetailsView} />
         <Route exact path="/movies/" component={MoviesView} />
         {/* <Route path="/login-page" component={LoginPage} /> */}
         <Route path="/" component={MoviesView} />

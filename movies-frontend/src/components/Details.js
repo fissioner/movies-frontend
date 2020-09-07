@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { List, Space, Descriptions, Card } from 'antd';
 import { MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { useParams, withRouter } from 'react-router';
 
 
-const Article = () => {
-    const { id } = useParams();
+const Details = props => {
+    const { movie } = props;
     return (
-        <Descriptions title="User Info">
-            <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-            <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-            <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-            <Descriptions.Item label="Remark">{id}</Descriptions.Item>
-            <Descriptions.Item label="Address">
-                No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-    </Descriptions.Item>
-        </Descriptions>
+        <div>
+            <Descriptions title={movie.title}>
+                <Descriptions.Item label="Rated">{movie.rated}</Descriptions.Item>
+                <Descriptions.Item label="Released">{movie.released_on}</Descriptions.Item>
+                <Descriptions.Item label="Genre">{movie.genre}</Descriptions.Item>
+                <Descriptions.Item label="director">{movie.director}</Descriptions.Item>
+            </Descriptions>
+            <div style={{margin: '25px 0px 10px 0px'}}>Plot:</div>
+            <div style={{fontSize: '16px'}}>{movie.plot}</div>
+        </div>
     );
 }
 
-export default withRouter(Article);
+export default withRouter(Details);

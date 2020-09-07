@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ArticleList from '../components/ArticleList'
 
+
 export default function MoviesList() {
     const [movies, setMovies] = useState();
 

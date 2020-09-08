@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css'
 import * as serviceWorker from './serviceWorker';
 import { createBrowserHistory } from "history";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import MasterContainer from './containers/MasterContainer';
 import MoviesView from './views/MoviesView';

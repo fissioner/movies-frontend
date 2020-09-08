@@ -1,16 +1,16 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useParams, withRouter } from 'react-router';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import { useParams } from 'react-router';
+import { BrowserRouter as  Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
 const AuthForm = () => {
     const { form } = useParams();
     const history = useHistory();
-    const form_type = form == 'register' ? 'Sign Up' : 'Log In';
-    const isRegister = form == 'register' ? true : false;
+    const form_type = form === 'register' ? 'Sign Up' : 'Log In';
+    const isRegister = form === 'register' ? true : false;
 
     function persistToken(token) {
         window.localStorage.setItem('token', token);

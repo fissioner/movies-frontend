@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { List, Space, Descriptions, Card } from 'antd';
-import { MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { useParams, withRouter } from 'react-router';
+import React from 'react';
+import { Descriptions } from 'antd';
+import { withRouter } from 'react-router';
 
 
 const Details = props => {

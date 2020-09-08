@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import axios from 'axios';
-import { useParams, withRouter } from 'react-router';
+import { useParams } from 'react-router';
 
 import Details from '../components/Details';
 import Reviews from '../components/Reviews';

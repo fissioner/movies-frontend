@@ -1,7 +1,7 @@
-import React, { useState, useEffect, createElement, isValidElement } from 'react';
-import { useParams, withRouter } from 'react-router';
-import { Comment, Tooltip, List, Divider } from 'antd';
-import { StarOutlined, DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import React from 'react';
+import { withRouter } from 'react-router';
+import { Comment, Tooltip, List } from 'antd';
+import { StarOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
 import CommentForm from './CommentForm';

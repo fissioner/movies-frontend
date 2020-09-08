@@ -20,7 +20,7 @@ const MasterContainer = (props) => {
       </Header>
       <Content style={{ padding: '0 50px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item><a onClick={() => history.goBack()}>| Back |</a></Breadcrumb.Item>
+          <Breadcrumb.Item><span onClick={() => history.goBack()}>| Back |</span></Breadcrumb.Item>
         </Breadcrumb>
         <Search className='center' 
           style={{ width: '300px', marginBottom: '16px'}} 

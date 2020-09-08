@@ -21,7 +21,7 @@ const AuthForm = () => {
     function getToken(username, password) {
         console.log(password, username)
         axios.post(
-            `http://127.0.0.1:8000/api-token-auth/`, {
+            `http://54.221.172.184:8000/api-token-auth/`, {
             password: password,
             username: username,
         }
@@ -34,7 +34,7 @@ const AuthForm = () => {
         let { password, username } = values;
         if (isRegister) {
             axios.post(
-                `http://localhost:8000/users/`, {
+                `http://54.221.172.184:8000/users/`, {
                 password: password,
                 username: username,
             }

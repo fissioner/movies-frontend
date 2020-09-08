@@ -96,12 +96,12 @@ class CommentForm extends React.Component {
         let data = {
             "rating": this.state.stars,
             "comment": this.state.value,
-            "movie": `http://localhost:8000/movies/${this.props.movie_id}/`        }
+            "movie": `http://54.221.172.184:8000/movies/${this.props.movie_id}/`        }
         let headers = { 
             withCredentials: true,
             headers: { Authorization: `Token ${token}` }
         };
-        axios.post(`http://localhost:8000/reviews/`, data, headers
+        axios.post(`http://54.221.172.184:8000/reviews/`, data, headers
         ).then(res => console.log(res)
         ).catch(error => {
             console.log(error)

@@ -14,7 +14,7 @@ export default function DetailsView() {
 
     async function getMovie() {
         const result = await axios.get(
-            `http://localhost:8000/movies/${id}`, {
+            `http://54.221.172.184:8000/movies/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
             }

@@ -14,7 +14,7 @@ function App() {
  
   useEffect(async () => {
     const result = await axios.get(
-      'http://localhost:8000/movies/', {
+      'http://54.221.172.184:8000/movies/', {
         headers: {
           'Content-Type': 'application/json',
         }

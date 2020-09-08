@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import MasterContainer from './containers/MasterContainer';
 import MoviesView from './views/MoviesView';
-import DetailsView from './views/DetailsView'
+import DetailsView from './views/DetailsView';
+import AuthForm from './components/AuthForm';
 
 var hist = createBrowserHistory();
 
@@ -15,6 +16,7 @@ ReactDOM.render(
   <Router history={hist}>
     <MasterContainer>
       <Switch>
+        <Route exact path="/auth/:form" component={AuthForm} />
         <Route exact path="/movies/details/:id" component={DetailsView} />
         <Route exact path="/movies/search/:search_term" component={MoviesView} />
         <Route exact path="/movies/" component={MoviesView} />

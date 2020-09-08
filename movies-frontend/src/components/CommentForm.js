@@ -1,7 +1,6 @@
-import React, { useState, useEffect, createElement, isValidElement } from 'react';
-import { useParams, withRouter } from 'react-router';
-import { Comment, Tooltip, Avatar, Form, Button, List, Input, Rate, Divider } from 'antd';
-import { StarOutlined, DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import React from 'react';
+import { Comment, Avatar, Form, Button, List, Input, Rate, Divider, message } from 'antd';
+import { StarOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 import moment from 'moment';
@@ -33,21 +32,45 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 class CommentForm extends React.Component {
     constructor(props) {
         super(props);
-     
+
         this.state = {
             comments: [],
             submitting: false,
             value: '',
             stars: 0,
-            hide: false
+            hide: false,
+            token: window.localStorage.getItem('token')
         };
-      }
+    }
+
+    validateComment = () => {
+        const token = window.localStorage.getItem('token');
+        this.setState({
+            token: token
+        })
+        console.log('Token retrieved? ', token, this.state.t);
+        if (!token) {
+            return message.error('You must log in to add a review.');
+        }
+        if (!this.state.stars) {
+            return message.error('Please select a start rating.');
+        }
+
+        this.handleSubmit();
+    };
 
     handleRating = stars => {
         this.setState({ stars });
     }
 
+    getToken = () => {
+        this.state({
+            token: window.localStorage.getItem('token')
+        })
+    }
+
     handleSubmit = () => {
+        const token = window.localStorage.getItem('token');
         if (!this.state.stars) {
             return;
         }
@@ -70,12 +93,16 @@ class CommentForm extends React.Component {
             ],
         });
 
-        axios.post(
-            `http://localhost:8000/reviews/`, {
-                "rating": this.state.stars,
-                "comment": this.state.value,
-                "movie": `http://localhost:8000/movies/${this.props.movie_id}/`
-        }
+        let data = {
+            "rating": this.state.stars,
+            "comment": this.state.value,
+            "movie": `http://localhost:8000/movies/${this.props.movie_id}/`        }
+        let headers = { 
+            withCredentials: true,
+            headers: { Authorization: `Token ${token}` }
+        };
+        axios.post(`http://localhost:8000/reviews/`, data, headers
+        ).then(res => console.log(res)
         ).catch(error => {
             console.log(error)
         });
@@ -95,24 +122,24 @@ class CommentForm extends React.Component {
         return (
             <>
                 {comments.length > 0 && <CommentList comments={comments} />}
-                {this.state.hide ? '' : <div><Divider style={{color: '#08c'}}>Submit a Review</Divider>
-                <div style={{marginLeft: '45px'}}>Rate: &nbsp;&nbsp;<Rate onChange={this.handleRating}/></div>
-                <Comment
-                    avatar={
-                        <Avatar
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            alt="Han Solo"
-                        />
-                    }
-                    content={
-                        <Editor
-                            onChange={this.handleChange}
-                            onSubmit={this.handleSubmit}
-                            submitting={submitting}
-                            value={value}
-                        />
-                    }
-                /></div>}
+                {this.state.hide ? '' : <div><Divider style={{ color: '#08c' }}>Submit a Review</Divider>
+                    <div style={{ marginLeft: '45px' }}>Rate: &nbsp;&nbsp;<Rate onChange={this.handleRating} /></div>
+                    <Comment
+                        avatar={
+                            <Avatar
+                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                alt="Han Solo"
+                            />
+                        }
+                        content={
+                            <Editor
+                                onChange={this.handleChange}
+                                onSubmit={this.validateComment}
+                                submitting={submitting}
+                                value={value}
+                            />
+                        }
+                    /></div>}
             </>
         );
     }

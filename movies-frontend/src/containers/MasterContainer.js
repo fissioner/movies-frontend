@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Input } from 'antd';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import '../index.css';
 
 const { Search } = Input;
@@ -14,6 +14,8 @@ const MasterContainer = (props) => {
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
           <Menu.Item key="1" style={{ backgroundColor: 'black', fontWeight: 'bold' }}><Link to='/movies/'>CineCritic</Link></Menu.Item>
+          <Menu.Item><Link to='/auth/register'>Sign Up</Link></Menu.Item>
+          <Menu.Item><Link to='/auth/login'>Log In</Link></Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px' }}>
@@ -22,7 +24,7 @@ const MasterContainer = (props) => {
         </Breadcrumb>
         <Search className='center' 
           style={{ width: '300px', marginBottom: '16px'}} 
-          placeholder="e.g. spider, 2019, james, etc."
+          placeholder="search for title, year, director..."
           onSearch={search_term => history.push(`/movies/search/${search_term}`)}
           enterButton />
         <div className="site-layout-content">{props.children}</div>

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Input } from 'antd';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory, withRouter } from "react-router-dom";
+import '../index.css';
 
+const { Search } = Input;
 
 const { Header, Content, Footer } = Layout;
 const MasterContainer = (props) => {
@@ -15,10 +17,14 @@ const MasterContainer = (props) => {
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }} />
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item><a onClick={() => history.goBack()}>| Back |</a></Breadcrumb.Item>
         </Breadcrumb>
+        <Search className='center' 
+          style={{ width: '300px', marginBottom: '16px'}} 
+          placeholder="e.g. spider, 2019, james, etc."
+          onSearch={search_term => history.push(`/movies/search/${search_term}`)}
+          enterButton />
         <div className="site-layout-content">{props.children}</div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>

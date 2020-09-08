@@ -15,7 +15,8 @@ ReactDOM.render(
   <Router history={hist}>
     <MasterContainer>
       <Switch>
-        <Route exact path="/movies/:id" component={DetailsView} />
+        <Route exact path="/movies/details/:id" component={DetailsView} />
+        <Route exact path="/movies/search/:search_term" component={MoviesView} />
         <Route exact path="/movies/" component={MoviesView} />
         {/* <Route path="/login-page" component={LoginPage} /> */}
         <Route path="/" component={MoviesView} />

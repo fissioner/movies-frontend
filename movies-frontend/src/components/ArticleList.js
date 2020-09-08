@@ -25,7 +25,7 @@ const Article = (props) => {
             grid={{ gutter: 16, column: 4 }}
             dataSource={props.movies}
             renderItem={item => (
-                <Link to={`/movies/${item.id}`}>
+                <Link to={`/movies/details/${item.id}`}>
                     <List.Item>
                         <img
                             width={272}

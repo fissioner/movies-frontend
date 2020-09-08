@@ -4,8 +4,10 @@ import { Comment, Tooltip, List, Divider } from 'antd';
 import { StarOutlined, DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
 import moment from 'moment';
 
+import CommentForm from './CommentForm';
+
 const Reviews = props => {
-    const { reviews } = props;
+    const { reviews, movie_id } = props;
     return (
         <>
             {reviews.length > 0 ? <List
@@ -30,6 +32,7 @@ const Reviews = props => {
                     </li>
                 )}
             /> : ''}
+            <CommentForm movie_id={movie_id} />
         </>
     );
 }

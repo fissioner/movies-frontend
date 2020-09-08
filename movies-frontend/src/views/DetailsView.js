@@ -34,7 +34,7 @@ export default function DetailsView() {
     return (
         <>
             <Details movie={movie} />
-            <Reviews reviews={reviews} />
+            <Reviews reviews={reviews} movie_id={id} />
         </>
     );
 }

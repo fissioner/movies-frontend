@@ -14,7 +14,7 @@ export default function DetailsView() {
 
     async function getMovie() {
         const result = await axios.get(
-            `http://54.221.172.184:8000/movies/${id}`, {
+            `${process.env.REACT_APP_MOVIES_URL}/movies/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
             }

@@ -12,7 +12,7 @@ export default function MoviesList() {
 
   async function getMovies() {
     const result = await axios.get(
-      `http://54.221.172.184:8000/movies?search=${search_term ? search_term : ''}`, {
+      `${process.env.REACT_APP_MOVIES_URL}/movies?search=${search_term ? search_term : ''}`, {
       headers: {
         'Content-Type': 'application/json',
       }
